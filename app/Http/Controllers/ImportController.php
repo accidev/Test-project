@@ -53,7 +53,9 @@ class ImportController extends Controller
                     DB::table("additional_properties")->where('product_id', $productId)->update($this->returnArrayForAdditionalTable($product, $productId));
                     $oldPhotosPath = Photo::all()->where("product_id", $productId);
                     foreach ($oldPhotosPath as $photoPath) {
-                        unlink($photoPath['path']);
+                        if (file_exists($photoPath->path)) {
+                            unlink($photoPath['path']);
+                        }
                     }
                     DB::table('photo')->where('product_id', $productId)->delete();
                 }
