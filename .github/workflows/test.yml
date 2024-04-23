@@ -1,12 +1,12 @@
-name: Run main-pr
+name: Run master-pr
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
-  phplint-main-pr:
+  phplint-master-pr:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -15,7 +15,7 @@ jobs:
       - name: Check by PHP linter
         uses: fxpw/PHP-Lint-php8.3@master
 
-  phpstan-main-pr:
+  phpstan-master-pr:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
